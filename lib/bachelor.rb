@@ -1,13 +1,10 @@
 require 'pry'
 def get_first_name_of_season_winner(data, season)
-  # code here
-  data.each do |season_num, arrays|
-  arrays.each do |individual_profile|
-  individual_profile.each do |key, value|
-#binding.pry 
+  data[season].each do |element|
+    if element["status"] == "Winner"
+      return element["name"].split(" ")[0]
+    end
   end
-end
-end
 end
 
 def get_contestant_name(data, occupation)
