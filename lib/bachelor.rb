@@ -31,9 +31,24 @@ counter
 end
 
 def get_occupation(data, hometown)
-  # code here
+  data.each do |season, contestant|
+    contestant.each do |profile|
+      if profile["hometown"] == hometown
+        return profile["occupation"]
+      end
+    end 
+  end
 end
 
 def get_average_age_for_season(data, season)
-  # code here
-end
+ total_age = 0
+ number_of_contestants = 0
+  data[season].each do |contestant_hash|
+  #binding.pry
+  total_age += (contestant_hash["age"]).to_i
+  number_of_contestants += 1
+  end 
+  (total_age / number_of_contestants.to_f).round(0)
+ end
+  
+
